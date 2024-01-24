@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <h1>Coucou dit le Coucou !</h1>
+
+    <div>{{ mySerie.title }} {{ autreVar }}</div>
+
+        <div>{{ "+1 year"|date('Y') }}</div>
+
+        <div>
+            {% set name = "Yoann" %}
+            <h2>{{ name|length }}</h2>
+
+            {# cree un tableau #}
+            {% set colors = ["orange", "brown", "turquoise", "blue"] %}
+
+            <div>Nombre de couleurs : {{ colors|length }}</div>
+            <div>{{ colors|join(' / ') }}</div>
+
+            {% for color in colors %}
+                <div>{{ loop.last }}</div>
+                <div style="background-color: {{ color }}">{{ color }}</div>
+            {% endfor %}
+        </div>
+
+        {# un objet #}
+        {% set book =
+            {
+                title: 'Pifpaf',
+                year: 2000,
+                author: "John Doe"
+            }
+        %}
+        <h3>{{book.author }}</h3>
+        <div>
+            {% for key, val in book %}
+            <div>{{ key }} : {{ val }}</div>
+            {% endfor %}
+        </div>
+
+{% endblock %}
+
+{% block title %} {{ parent() }} | Testounet{% endblock %}
