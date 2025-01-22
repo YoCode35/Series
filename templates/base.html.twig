@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <link rel="icon" href="{{ asset('img/icon.png') }}">
+
+        {% block extrastyles %}{% endblock %}
     </head>
 
     <body>
@@ -25,13 +27,21 @@
                 {% include('inc/nav.html.twig') %}
             </header>
 
+             <!-- Message de l'état d'exécution -->
+             {% for label, messages in app.flashes%}
+                 {% for message in messages %}
+                     <div class="flash flash-{{ label }}">
+                        {{ message }}
+                     </div>
+                 {% endfor%}{% endfor%}
+
             <main>
-                {% block body %}{% endblock %}
+                {% block body %}For more Series !{% endblock %}
             </main>
 
             <footer>
                 {% include('inc/nav.html.twig') %}
-                <div>&copy; {{ "now"|date("Y") }} Series !</div>
+                <div>&copy; {{ "now"|date("Y") }} </div>
             </footer>
 
          </div>
